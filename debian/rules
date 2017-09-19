@@ -15,11 +15,12 @@
 
 
 %:
-	dh $@
+	dh $@ --with=autotools_dev,systemd
 
 
-# dh_make generated override targets
-# This is example for Cmake (See https://bugs.debian.org/641051 )
-#override_dh_auto_configure:
-#	dh_auto_configure -- #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-gc --localstatedir=/var/lib --libdir=/usr/lib/nix
 
+
+override_dh_perl:
+	dh_perl ./usr/lib/nix/perl5/site_perl/5.24.1/x86_64-linux-gnu-thread-multi/auto/Nix/Store/

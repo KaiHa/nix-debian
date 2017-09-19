@@ -1,15 +1,44 @@
 Source: nix
-Section: unknown
+Section: devel
 Priority: optional
-Maintainer: root <root@unknown>
-Build-Depends: debhelper (>= 9)
+Maintainer: Kai Harries <kai.harries@gmail.com>
+Build-Depends: debhelper (>= 9.20160709~),
+               autotools-dev,
+               bison,
+               curl,
+               docbook-xsl-ns,
+               docbook5-xml,
+               flex,
+               libbz2-dev,
+               libcurl4-openssl-dev,
+               libdbd-sqlite3-perl,
+               libgc-dev,
+               liblzma-dev,
+               libseccomp-dev,
+               libsodium-dev,
+               libsqlite3-dev,
+               libssl-dev,
+               libwww-curl-perl,
+               libxml2-utils,
+               pkgconf,
+               xsltproc,
 Standards-Version: 3.9.8
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/collab-maint/nix.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/nix.git
+Homepage: https://nixos.org/nix/
+Vcs-Git: https://github.com/NixOS/nix.git
+Vcs-Browser: https://github.com/NixOS/nix
 
 Package: nix
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: bzip2,
+         curl,
+         libdbd-sqlite3-perl,
+         libwww-curl-perl,
+         perl,
+         xz-utils,
+         ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}
+Description: Purely functional package manager
+ A powerful package manager for Linux and other Unix systems that
+ makes package management reliable and reproducible. Nix provides
+ atomic upgrades and rollbacks, side-by-side installation of multiple
+ versions of a package, multi-user package management and easy setup
+ of build environments.

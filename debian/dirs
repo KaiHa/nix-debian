@@ -1,0 +1,3 @@
+nix/var/nix/daemon-socket
+var/lib/nix/gcroots/per-user
+var/lib/nix/profiles/per-user

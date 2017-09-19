@@ -20,6 +20,23 @@ set -e
 
 case "$1" in
     configure)
+        groupadd --force nix-users
+        chgrp nix-users /nix/var/nix/daemon-socket
+        chmod ug=rwx,o= /nix/var/nix/daemon-socket
+        groupadd --force --system nixbld
+        for n in $(seq 1 10); do
+            if ! id nixbld$n > /dev/null 2>&1; then
+                useradd --system \
+                        --comment "Nix build user $n" \
+                        --home-dir /var/empty \
+                        --gid nixbld --groups nixbld \
+                        --no-user-group \
+                        --shell "$(which nologin)" \
+                        nixbld$n
+            fi
+        done
+        chmod u=rwx,g=rwx,o=rwxt /var/lib/nix/gcroots/per-user
+        chmod u=rwx,g=rwx,o=rwxt /var/lib/nix/profiles/per-user
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

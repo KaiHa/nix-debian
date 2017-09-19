@@ -1,6 +1,8 @@
 nix for Debian
--------------
+--------------
 
-<possible notes regarding this package - if none, delete this file>
+The access to the nix-daemon is restricted to members of the
+`nix-users` group. Therefor it is necessary to add the users that
+should be able to perform nix operations to the group `nix-users`.
 
- -- root <root@unknown>  Sun, 17 Sep 2017 18:31:49 +0000
+ -- Kai Harries <kai.harries@gmail.com>  Sat, 23 Sep 2017 20:13:42 +0200

@@ -1,5 +1,5 @@
-nix (1.11.15) unstable; urgency=medium
+nix (1.11.15-1) unstable; urgency=medium
 
-  * Initial Release.
+  * Initial release (Closes: #nnnn)
 
- -- root <root@unknown>  Sun, 17 Sep 2017 18:31:49 +0000
+ -- Kai Harries <kai.harries@gmai.com>  Sun, 17 Sep 2017 18:31:49 +0000
