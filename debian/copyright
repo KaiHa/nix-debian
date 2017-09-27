@@ -3,6 +3,7 @@ Upstream-Name: nix
 Source: https://github.com/NixOS/nix
 
 Files: *
+Copyright: 2006-2017 Eelco Dostra, ...
 License: LGPL-2.1
  GNU LESSER GENERAL PUBLIC LICENSE
  Version 2.1, February 1999
