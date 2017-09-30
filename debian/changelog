@@ -1,4 +1,4 @@
-nix (1.11.15-1) unstable; urgency=medium
+nix (1.11.15-2~a1) unstable; urgency=medium
 
   * Initial release (Closes: #877019)
 

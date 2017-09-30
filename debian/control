@@ -2,7 +2,8 @@ Source: nix
 Section: devel
 Priority: optional
 Maintainer: Kai Harries <kai.harries@gmail.com>
-Build-Depends: debhelper (>= 9.20160709~),
+Build-Depends: debhelper (>= 9),
+               dh-systemd,
                autotools-dev,
                bison,
                curl,
