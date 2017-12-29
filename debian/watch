@@ -1,0 +1,3 @@
+# watch control file for uscan
+version=4
+https://nixos.org/releases/nix/nix-(\d+\.\d+\.\d+)/nix-(.+).tar.xz debian uupdate
