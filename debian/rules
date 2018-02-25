@@ -23,4 +23,9 @@ override_dh_auto_configure:
 
 
 override_dh_perl:
-	dh_perl ./usr/lib/nix/perl5/site_perl/5.24.1/x86_64-linux-gnu-thread-multi/auto/Nix/Store/
+	dh_perl ./usr/lib/nix/perl5/site_perl/5.26.1/x86_64-linux-gnu-thread-multi/auto/Nix/Store/
+
+override_dh_auto_install:
+	dh_auto_install
+	# nix-log2xml will be officialy removed from nix 2.0
+	rm debian/nix/usr/bin/nix-log2xml
