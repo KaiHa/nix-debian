@@ -15,7 +15,7 @@
 
 
 %:
-	dh $@ --with=autotools_dev,systemd
+	dh $@ --with=systemd
 
 
 override_dh_auto_configure:
@@ -29,3 +29,10 @@ override_dh_auto_install:
 	dh_auto_install
 	# nix-log2xml will be officialy removed from nix 2.0
 	rm debian/nix/usr/bin/nix-log2xml
+	# remove deprecated upstart configuration
+	rm debian/nix/etc/init/nix-daemon.conf
+	
+	mkdir -p debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig
+	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-expr.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-main.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-store.pc
