@@ -1,0 +1,4 @@
+config.h
+config.log
+config.status
+src/libexpr/parser-tab.output

@@ -16,7 +16,7 @@ include /usr/share/dpkg/architecture.mk
 
 
 %:
-	dh $@ --with=systemd
+	dh $@ --with=systemd,autoreconf
 
 
 override_dh_auto_configure:
@@ -32,3 +32,9 @@ override_dh_auto_install:
 	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
 	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc
 	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-store.pc
+
+
+override_dh_auto_clean:
+	dh_auto_clean
+	# remove output files created from ./configure templates
+	find . -name '*.in' | while read x; do if [ -f $${x%.in} ]; then rm -f $${x%.in}; fi; done
