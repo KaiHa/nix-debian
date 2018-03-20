@@ -1,4 +1,4 @@
-nix (1.11.16-1) UNRELEASED; urgency=medium
+nix (2.0-1) UNRELEASED; urgency=medium
 
   * Initial release (Closes: #877019)
 
