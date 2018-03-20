@@ -23,9 +23,6 @@ override_dh_auto_configure:
 	dh_auto_configure -- --enable-gc --localstatedir=/var/lib --libdir=/usr/lib/nix
 
 
-override_dh_perl:
-	dh_perl ./usr/lib/nix/perl5/site_perl/5.26.1/x86_64-linux-gnu-thread-multi/auto/Nix/Store/
-
 override_dh_auto_install:
 	dh_auto_install
 	# remove deprecated upstart configuration
