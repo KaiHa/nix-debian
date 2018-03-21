@@ -20,7 +20,7 @@ set -e
 
 case "$1" in
     configure)
-        groupadd --force nix-users
+        groupadd --force --system nix-users
         chgrp nix-users /var/lib/nix/daemon-socket
         chmod ug=rwx,o= /var/lib/nix/daemon-socket
         groupadd --force --system nixbld
