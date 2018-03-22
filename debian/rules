@@ -20,7 +20,7 @@ include /usr/share/dpkg/architecture.mk
 
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-gc --localstatedir=/var/lib --libdir=/usr/lib/nix
+	dh_auto_configure -- --enable-gc --with-coreutils-bin=/usr/bin:/bin --localstatedir=/var/lib --libdir=/usr/lib/nix
 
 
 override_dh_auto_install:
