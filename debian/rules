@@ -3,6 +3,7 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
+include /usr/share/dpkg/architecture.mk
 
 # see FEATURE AREAS in dpkg-buildflags(1)
 #export DEB_BUILD_MAINT_OPTIONS = hardening=+all
@@ -15,24 +16,25 @@
 
 
 %:
-	dh $@ --with=systemd
+	dh $@ --with=systemd,autoreconf
 
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-gc --localstatedir=/var/lib --libdir=/usr/lib/nix
+	dh_auto_configure -- --enable-gc --with-coreutils-bin=/usr/bin:/bin --localstatedir=/var/lib --libdir=/usr/lib/nix
 
-
-override_dh_perl:
-	dh_perl ./usr/lib/nix/perl5/site_perl/5.26.1/x86_64-linux-gnu-thread-multi/auto/Nix/Store/
 
 override_dh_auto_install:
 	dh_auto_install
-	# nix-log2xml will be officialy removed from nix 2.0
-	rm debian/nix/usr/bin/nix-log2xml
 	# remove deprecated upstart configuration
 	rm debian/nix/etc/init/nix-daemon.conf
 	
-	mkdir -p debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig
-	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-expr.pc
-	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-main.pc
-	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/nix-store.pc
+	mkdir -p debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
+	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-store.pc
+
+
+override_dh_auto_clean:
+	dh_auto_clean
+	# remove output files created from ./configure templates
+	find . -name '*.in' | while read x; do if [ -f $${x%.in} ]; then rm -f $${x%.in}; fi; done
