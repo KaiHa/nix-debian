@@ -1,5 +1,5 @@
-nix (2.0-1) UNRELEASED; urgency=medium
+nix (2.0.4-1) UNRELEASED; urgency=medium
 
   * Initial release (Closes: #877019)
 
- -- Kai Harries <kai.harries@gmail.com>  Sun, 25 Feb 2018 18:56:55 +0100
+ -- Kai Harries <kai.harries@gmail.com>  Thu, 09 Aug 2018 20:36:05 +0200
