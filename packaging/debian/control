@@ -2,7 +2,7 @@ Source: nix
 Section: devel
 Priority: optional
 Maintainer: Kai Harries <kai.harries@gmail.com>
-Build-Depends: debhelper (>= 11),
+Build-Depends: debhelper (>= 10),
                bison,
                curl,
                docbook-xsl-ns,
