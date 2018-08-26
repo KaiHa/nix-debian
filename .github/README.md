@@ -21,4 +21,4 @@ apt install ../nix_<VERSION>.deb
 ```
 
 [1]: https://nixos.org/nix/
-[2]: https://github.com/KaiHa/nix-debian/issues/1
+[2]: https://github.com/KaiHa/nix-debian/issues/2
