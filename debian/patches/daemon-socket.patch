@@ -1,0 +1,19 @@
+commit e74b79dd79cdb06d377de835a6c399e2be6d6616
+Author: Kai Harries <kai.harries@gmail.com>
+Date:   Mon Aug 27 19:19:20 2018 +0200
+
+    Set NIX_REMOTE to unix-socket path
+
+diff --git a/scripts/nix-profile-daemon.sh.in b/scripts/nix-profile-daemon.sh.in
+index 445356da..d108ffe4 100644
+--- a/scripts/nix-profile-daemon.sh.in
++++ b/scripts/nix-profile-daemon.sh.in
+@@ -5,7 +5,7 @@ __ETC_PROFILE_NIX_SOURCED=1
+ # Set up secure multi-user builds: non-root users build through the
+ # Nix daemon.
+ if [ "$USER" != root -o ! -w @localstatedir@/nix/db ]; then
+-    export NIX_REMOTE=daemon
++    export NIX_REMOTE=unix://@localstatedir@/nix/daemon-socket/socket
+ fi
+ 
+ export NIX_USER_PROFILE_DIR="@localstatedir@/nix/profiles/per-user/$USER"

@@ -1,1 +1,2 @@
 fix-service-file-path.patch
+daemon-socket.patch
