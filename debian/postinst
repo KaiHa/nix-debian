@@ -21,8 +21,8 @@ set -e
 case "$1" in
     configure)
         groupadd --force --system nix-users
-        chgrp nix-users /var/lib/nix/daemon-socket
-        chmod ug=rwx,o= /var/lib/nix/daemon-socket
+        chgrp nix-users /nix/var/nix/daemon-socket
+        chmod ug=rwx,o= /nix/var/nix/daemon-socket
         groupadd --force --system nixbld
         for n in $(seq 1 10); do
             if ! id nixbld$n > /dev/null 2>&1; then
@@ -35,8 +35,8 @@ case "$1" in
                         nixbld$n
             fi
         done
-        chmod u=rwx,g=rwx,o=rwxt /var/lib/nix/gcroots/per-user
-        chmod u=rwx,g=rwx,o=rwxt /var/lib/nix/profiles/per-user
+        chmod u=rwx,g=rwx,o=rwxt /nix/var/nix/gcroots/per-user
+        chmod u=rwx,g=rwx,o=rwxt /nix/var/nix/profiles/per-user
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
