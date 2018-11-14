@@ -26,7 +26,7 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install
 	# remove deprecated upstart configuration
-	rm debian/nix/etc/init/nix-daemon.conf
+	-rm debian/nix/etc/init/nix-daemon.conf
 	
 	mkdir -p debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
 	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
