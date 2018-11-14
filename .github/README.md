@@ -16,9 +16,17 @@ Building the package
 uscan -ddd
 pdebuild --buildresult ..
 # or something more complicated like:
-# pdebuild --buildresult .. --pbuilder cowbuilder -- --distribution stretch --basepath /var/cache/pbuilder/stretch.cow
+# pdebuild --buildresult .. --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base.cow
 apt install ../nix_<VERSION>.deb
 ```
+
+Running the tests
+-----------------
+
+```bash
+sudo autopkgtest -B ../nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
+```
+
 
 [1]: https://nixos.org/nix/
 [2]: https://github.com/KaiHa/nix-debian/issues/2

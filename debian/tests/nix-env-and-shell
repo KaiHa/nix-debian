@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+
+all:
+	nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+	nix-channel --update
+	nix-shell -p nix-du --run "nix-du --help" '<nixpkgs>'
+	nix-env -iA nixpkgs.nix-du
+	nix-du --help

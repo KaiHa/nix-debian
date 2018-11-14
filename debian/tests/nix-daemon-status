@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+
+all:
+	[ $$(systemctl show --property=LoadState nix-daemon.socket) = "LoadState=loaded" ]
+	[ $$(systemctl show --property=LoadState nix-daemon.service) = "LoadState=loaded" ]
+	systemctl is-active nix-daemon.socket
