@@ -16,6 +16,9 @@ include /usr/share/dpkg/buildflags.mk
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
+export EDITLINE_CFLAGS = "-DREADLINE"
+export EDITLINE_LIBS   = "/usr/lib/x86_64-linux-gnu/libhistory.so /usr/lib/x86_64-linux-gnu/libreadline.so"
+
 
 %:
 	dh $@ --with=autoreconf
