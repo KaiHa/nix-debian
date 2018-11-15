@@ -9,6 +9,7 @@ inclusion into Debian.
 
 Help welcome :)
 
+
 Building the package
 --------------------
 
@@ -19,6 +20,19 @@ pdebuild --buildresult ..
 # pdebuild --buildresult .. --pbuilder cowbuilder -- --basepath /var/cache/pbuilder/base.cow
 apt install ../nix_<VERSION>.deb
 ```
+
+
+Building from git repository
+----------------------------
+
+```bash
+git clone https://github.com/NixOS/nix.git
+cd nix
+git remote add debian https://github.com/KaiHa/nix-debian.git
+git fetch
+gbp buildpackage --git-pbuilder --git-upstream-branch=origin/master --git-debian-branch=debian/master --git-upstream-tree=BRANCH
+```
+
 
 Running the tests
 -----------------
