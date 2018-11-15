@@ -4,14 +4,11 @@ Debian package of the nix package manager
 Packaging of the [nix package manager][1] for Debian. Ultimate goal is
 to get _nix_ included into Debian.
 
-Currently there is at least [one blocker][2] that will prevent
-inclusion into Debian.
-
-Help welcome :)
+[Help][2] is welcome :)
 
 
-Building the package
---------------------
+Building from the source tar-ball
+---------------------------------
 
 ```bash
 uscan -ddd
@@ -43,4 +40,4 @@ sudo autopkgtest -B ../nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
 
 
 [1]: https://nixos.org/nix/
-[2]: https://github.com/KaiHa/nix-debian/issues/2
+[2]: https://github.com/KaiHa/nix-debian/issues
