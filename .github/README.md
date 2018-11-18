@@ -19,16 +19,20 @@ apt install ../nix_<VERSION>.deb
 ```
 
 
-Building from git repository
-----------------------------
+Building from _nix_ git repository
+----------------------------------
 
 ```bash
 git clone https://github.com/NixOS/nix.git
 cd nix
 git remote add debian https://github.com/KaiHa/nix-debian.git
 git fetch
-gbp buildpackage --git-pbuilder --git-upstream-branch=origin/master --git-debian-branch=debian/master --git-upstream-tree=BRANCH
+gbp buildpackage --git-upstream-branch=origin/master --git-debian-branch=debian/master
 ```
+
+For this to work `git-buildpackage` must be installed and a
+`cowbuilder` _basepath_ must be available. The default options for
+`gbp` are found in `debian/gbp.conf`.
 
 
 Running the tests
