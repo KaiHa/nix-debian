@@ -3,10 +3,12 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
-include /usr/share/dpkg/architecture.mk
-
 # see FEATURE AREAS in dpkg-buildflags(1)
-#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/buildflags.mk
 
 # see ENVIRONMENT in dpkg-buildflags(1)
 # package maintainers to append CFLAGS
@@ -20,14 +22,17 @@ include /usr/share/dpkg/architecture.mk
 
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-gc --with-coreutils-bin=/usr/bin:/bin --localstatedir=/nix/var --libdir=/usr/lib/nix
+	dh_auto_configure -- \
+	  --enable-gc \
+	  --with-coreutils-bin=/usr/bin:/bin \
+	  --localstatedir=/nix/var \
+	  --libdir=/usr/lib/nix
 
 
 override_dh_auto_install:
 	dh_auto_install
 	# remove deprecated upstart configuration
 	-rm debian/nix/etc/init/nix-daemon.conf
-	
 	mkdir -p debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
 	-mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
 	-mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc

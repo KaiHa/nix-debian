@@ -1,3 +1,4 @@
 fix-service-file-path.patch
 fix-init.d-script.patch
 fix-init.d-script-2.patch
+fix-Makefile.config.patch

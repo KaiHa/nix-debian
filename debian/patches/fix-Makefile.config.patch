@@ -1,0 +1,19 @@
+commit 3b5a9bd6e1a59561789e8733c91115f1a3aee242
+Author: Kai Harries <kai.harries@gmail.com>
+Date:   Fri Nov 23 15:23:57 2018 +0100
+
+    Append CPPFLAGS to GLOBAL_*FLAGS, copy LDFLAGS into GLOBAL_LDFLAGS
+
+diff --git a/Makefile b/Makefile
+index 45a3338e..6d433249 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,4 +26,8 @@ ifeq ($(OPTIMIZE), 1)
+   GLOBAL_CXXFLAGS += -O3
+ endif
+ 
++GLOBAL_CFLAGS   += $(CPPFLAGS)
++GLOBAL_CXXFLAGS += $(CPPFLAGS)
++GLOBAL_LDFLAGS  += $(LDFLAGS)
++
+ include mk/lib.mk
