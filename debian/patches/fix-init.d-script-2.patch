@@ -1,0 +1,17 @@
+Author: Kai Harries <kai.harries@gmail.com>
+Date:   Tue Nov 20 19:30:24 2018 +0100
+
+    Source init-functions in init.d script
+
+diff --git a/misc/systemv/nix-daemon b/misc/systemv/nix-daemon
+--- a/misc/systemv/nix-daemon
++++ b/misc/systemv/nix-daemon
+@@ -36,6 +36,8 @@ fi
+ 
+ # Source function library.
+ . /etc/init.d/functions
++# Redirect /etc/init.d/$script calls to systemctl
++. /lib/lsb/init-functions
+ 
+ LOCKFILE=/var/lock/subsys/nix-daemon
+ RUNDIR=/var/run/nix
