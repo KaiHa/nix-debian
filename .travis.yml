@@ -1,0 +1,23 @@
+sudo: true
+os: linux
+dist: xenial
+language: cpp
+
+install:
+  - sudo cowbuilder --create --distribution stretch --mirror http://deb.debian.org/debian/ --othermirror "deb http://deb.debian.org/debian stretch-backports main"
+
+script:
+  - uscan -ddd
+  - pdebuild --buildresult .. --pbuilder cowbuilder
+
+addons:
+  apt:
+    packages:
+    - cowbuilder
+    - debhelper
+    - debian-archive-keyring
+    - devscripts
+    - dh-autoreconf
+    - fakeroot
+    - libwww-perl
+    - pdebuild
