@@ -5,6 +5,7 @@ Maintainer: Kai Harries <kai.harries@gmail.com>
 Build-Depends: debhelper (>= 10),
                bison,
                curl,
+               dh-autoreconf,
                docbook-xsl-ns,
                docbook5-xml,
                flex,
