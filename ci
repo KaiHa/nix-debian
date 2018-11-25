@@ -1,0 +1,44 @@
+#!/usr/bin/make -f
+#
+# Be careful this Makefile assumes it is run on a travis-ci
+# environment, where it can cause not much harm.
+#
+
+define lxc_conf
+  lxc.network.type = veth
+  lxc.network.flags = up
+  lxc.network.link = virbr0
+  lxc.network.hwaddr = 00:FF:AA:00:00:01
+  lxc.network.ipv4 = 0.0.0.0/24
+endef
+
+export lxc_conf
+
+all: test-stretch
+
+build-%: /var/cache/pbuilder/base-%.cow
+	uscan -ddd
+	pdebuild --buildresult .. \
+	  --pbuilder cowbuilder -- \
+	  --basepath /var/cache/pbuilder/base-$*.cow
+
+test-%: build-% /var/lib/lxc/autopkgtest-%
+	sudo autopkgtest -B ../nix_*_amd64.deb . \
+	  -- lxc autopkgtest-$*
+
+/var/cache/pbuilder/base-%.cow:
+	sudo cowbuilder --create \
+	  --distribution $* \
+	  --basepath $@ \
+	  --mirror http://deb.debian.org/debian/ \
+	  --othermirror "deb http://deb.debian.org/debian $*-backports main"
+
+/var/lib/lxc/autopkgtest-%: /etc/lxc/default.conf
+	sudo systemctl lxc restart
+	sudo virsh net-start default
+	sudo autopkgtest-build-lxc debian stretch
+	ls -l /var/lib/lxc/
+
+/etc/lxc/default.conf:
+	echo "$$lxc_conf" > lxc.default.conf
+	sudo mv lxc.default.conf /etc/lxc/default.conf
