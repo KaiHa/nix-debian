@@ -6,17 +6,18 @@ language: cpp
 install:
   # Create the build environment
   - sudo cowbuilder --create
-    --distribution stretch
-    --mirror http://deb.debian.org/debian/
-    --othermirror "deb http://deb.debian.org/debian stretch-backports main"
+      --distribution stretch
+      --mirror http://deb.debian.org/debian/
+      --othermirror "deb http://deb.debian.org/debian stretch-backports main"
   # Create the test environment
-  - sudo cat >/etc/lxc/default.conf <<-EOT
-      lxc.network.type = veth
-      lxc.network.flags = up
-      lxc.network.link = virbr0
-      lxc.network.hwaddr = 00:FF:AA:00:00:01
-      lxc.network.ipv4 = 0.0.0.0/24
-      EOT
+  - |
+    sudo cat >/etc/lxc/default.conf <<-EOT
+    lxc.network.type = veth
+    lxc.network.flags = up
+    lxc.network.link = virbr0
+    lxc.network.hwaddr = 00:FF:AA:00:00:01
+    lxc.network.ipv4 = 0.0.0.0/24
+    EOT
   - sudo /etc/init.d/lxc start
   - sudo virsh net-start default
   - sudo autopkgtest-build-lxc debian stretch
