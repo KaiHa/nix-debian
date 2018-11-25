@@ -1,9 +1,10 @@
 sudo: true
 os: linux
-dist: xenial
+dist: bionic
 language: cpp
 
 script:
+  - cat /etc/issue
   - ./ci test-stretch
 
 addons:
