@@ -4,6 +4,8 @@ dist: xenial
 language: cpp
 
 script:
+  - aptitude search autopkgtest
+  - false
   - ./ci test-stretch
 
 addons:
