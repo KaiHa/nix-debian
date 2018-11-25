@@ -34,7 +34,7 @@ test-%: build-% /var/lib/lxc/autopkgtest-%
 	  --othermirror "deb http://deb.debian.org/debian $*-backports main"
 
 /var/lib/lxc/autopkgtest-%: /etc/lxc/default.conf
-	sudo systemctl lxc restart
+	sudo systemctl restart lxc
 	sudo virsh net-start default
 	sudo autopkgtest-build-lxc debian stretch
 	ls -l /var/lib/lxc/
