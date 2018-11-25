@@ -35,7 +35,6 @@ test-%: build-% /var/lib/lxc/autopkgtest-%
 
 /var/lib/lxc/autopkgtest-%: /etc/lxc/default.conf
 	sudo systemctl restart lxc
-	sudo virsh net-start default
 	sudo autopkgtest-build-lxc debian stretch
 	ls -l /var/lib/lxc/
 
