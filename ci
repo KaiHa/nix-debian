@@ -26,6 +26,7 @@ test-%: build-% /var/lib/lxc/autopkgtest-%
 	sudo autopkgtest -B ../nix_*_amd64.deb . \
 	  -- lxc autopkgtest-$*
 
+.SECONDARY: /var/cache/pbuilder/base-stretch.cow
 /var/cache/pbuilder/base-%.cow:
 	sudo cowbuilder --create \
 	  --distribution $* \
@@ -33,10 +34,11 @@ test-%: build-% /var/lib/lxc/autopkgtest-%
 	  --mirror http://deb.debian.org/debian/ \
 	  --othermirror "deb http://deb.debian.org/debian $*-backports main"
 
+.SECONDARY: /var/lib/lxc/autopkgtest-stretch
 /var/lib/lxc/autopkgtest-%: /etc/lxc/default.conf
 	sudo systemctl restart lxc
 	sudo autopkgtest-build-lxc debian stretch
-	ls -l /var/lib/lxc/
+	sudo ls -la /var/lib/lxc/
 
 /etc/lxc/default.conf:
 	echo "$$lxc_conf" > lxc.default.conf
