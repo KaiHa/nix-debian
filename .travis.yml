@@ -17,6 +17,7 @@ addons:
     - devscripts
     - dh-autoreconf
     - fakeroot
+    - liblxc1/xenial-backports
     - libvirt-bin
     - libwww-perl
     - lxc/xenial-backports
