@@ -35,8 +35,7 @@ addons:
     - devscripts
     - dh-autoreconf
     - fakeroot
-    - libvirt-clients
-    - libvirt-daemon-system
+    - libvirt-bin
     - libwww-perl
     - lxc
     - pdebuild
