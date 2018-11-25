@@ -42,6 +42,14 @@ Running the tests
 sudo autopkgtest -B ../nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
 ```
 
+Current Weather
+---------------
+
+Branch `debian/stretch` on amd64 Debian _stretch_
+[![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=debian%2Fstretch)](https://travis-ci.org/KaiHa/nix-debian)
+
+Branch `master` on amd64 Debian _testing_
+[![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=master)](https://travis-ci.org/KaiHa/nix-debian)
 
 [1]: https://nixos.org/nix/
 [2]: https://github.com/KaiHa/nix-debian/issues
