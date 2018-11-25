@@ -10,7 +10,7 @@ install:
       --mirror http://deb.debian.org/debian/
       --othermirror "deb http://deb.debian.org/debian stretch-backports main"
   # Create the test environment
-  - |
+  - |2
     sudo cat >/etc/lxc/default.conf <<-EOT
     lxc.network.type = veth
     lxc.network.flags = up
