@@ -20,4 +20,5 @@ addons:
     - libvirt-bin
     - libwww-perl
     - lxc/xenial-backports
+    - lxc-utils/xenial-backports
     - pdebuild
