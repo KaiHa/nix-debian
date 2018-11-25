@@ -4,14 +4,13 @@ dist: xenial
 language: cpp
 
 script:
-  - aptitude search autopkgtest
-  - false
+  - apt-cache policy autopkgtest
   - ./ci test-stretch
 
 addons:
   apt:
     packages:
-    - autopkgtest
+    - autopkgtest/xenial-backports
     - cowbuilder
     - debhelper
     - debian-archive-keyring
