@@ -19,5 +19,5 @@ addons:
     - fakeroot
     - libvirt-bin
     - libwww-perl
-    - lxc
+    - lxc/xenial-backports
     - pdebuild
