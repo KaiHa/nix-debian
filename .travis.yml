@@ -4,20 +4,39 @@ dist: xenial
 language: cpp
 
 install:
+  # Create the build environment
   - sudo cowbuilder --create --distribution stretch --mirror http://deb.debian.org/debian/ --othermirror "deb http://deb.debian.org/debian stretch-backports main"
+  # Create the test environment
+  - sudo cat >/etc/lxc/default.conf <<EOT
+    lxc.network.type = veth
+    lxc.network.flags = up
+    lxc.network.link = virbr0
+    lxc.network.hwaddr = 00:FF:AA:00:00:01
+    lxc.network.ipv4 = 0.0.0.0/24
+    EOT
+  - sudo /etc/init.d/lxc start
+  - sudo virsh net-start default
+  - sudo autopkgtest-build-lxc debian stretch
 
 script:
+  # Build the Debian package
   - uscan -ddd
   - pdebuild --buildresult .. --pbuilder cowbuilder
+  # Test the package
+  - sudo autopkgtest -B ../nix_*_amd64.deb . -- lxc autopkgtest-stretch
 
 addons:
   apt:
     packages:
+    - autopkgtest
     - cowbuilder
     - debhelper
     - debian-archive-keyring
     - devscripts
     - dh-autoreconf
     - fakeroot
+    - libvirt-clients
+    - libvirt-daemon-system
     - libwww-perl
+    - lxc
     - pdebuild
