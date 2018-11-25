@@ -1,6 +1,10 @@
 sudo: required
 language: generic
 
+env:
+  - TRAVIS_DEBIAN_DISTRIBUTION=stretch
+    TRAVIS_DEBIAN_BACKPORTS=stretch-backports
+
 services:
   - docker
 
