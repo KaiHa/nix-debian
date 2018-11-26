@@ -1,0 +1,57 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          nix-daemon
+# Required-Start:    $local_fs $syslog
+# Required-Stop:     $local_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts the Nix daemon
+# Description:       This is a daemon which enable the multi-user mode
+#                    of the Nix package manager.
+### END INIT INFO
+
+# Author: Kai Harries <kai.harries@gmail.com>
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+DAEMON=/usr/bin/nix-daemon
+RUNDIR=/var/run/nix
+
+test -x $DAEMON || exit 0
+
+
+. /lib/lsb/init-functions
+
+
+case "$1" in
+  start)
+      mkdir -p ${RUNDIR}
+      log_daemon_msg "Starting Nix daemon" "nix-daemon"
+      /sbin/start-stop-daemon --start \
+			      --oknodo \
+			      --background \
+			      --exec $DAEMON \
+			      -- --daemon
+      log_end_msg $?
+      ;;
+  stop)
+      log_daemon_msg "Stopping Nix daemon" "nix-daemon"
+      /sbin/start-stop-daemon --stop \
+			      --exec $DAEMON \
+			      --retry 5
+      log_end_msg $?
+      ;;
+  force-reload|restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+      /sbin/start-stop-daemon --status \
+			      --exec $DAEMON
+      ;;
+  *)
+    echo "Usage: /etc/init.d/nix-daemon {start|stop|restart|force-reload|status}"
+    exit 1
+    ;;
+esac
+
+exit 0

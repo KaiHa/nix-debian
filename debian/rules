@@ -40,7 +40,7 @@ override_dh_auto_install:
 
 
 override_dh_installinit:
-	dh_installinit -pnix --name=nix-daemon --only-scripts
+	dh_installinit -pnix --name=nix-daemon
 	# fix package-contains-ancient-file lintian warning
 	touch --reference=debian/nix/lib/systemd/system/nix-daemon.service debian/nix/etc/init.d/nix-daemon
 
