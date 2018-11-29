@@ -1,6 +1,6 @@
 Tests: nix-daemon-status
 Depends: @, make, systemd
-Restrictions: isolation-container
+Restrictions: isolation-container, needs-root
 
 Tests: nix-env-and-shell
 Depends: @, ca-certificates, make
