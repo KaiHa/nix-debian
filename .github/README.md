@@ -53,7 +53,7 @@ Current Weather
 |:-----------------------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------|
 | [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=debian%2Fstretch)](https://travis-ci.org/KaiHa/nix-debian) | branch `debian/stretch` on amd64 Debian 9 (_Stretch_)           |
 | [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=master)](https://travis-ci.org/KaiHa/nix-debian)           | branch `master` on amd64 Debian _testing_ and Debian _unstable_ |
-| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=ubuntu%2Ftrusty)](https://travis-ci.org/KaiHa/nix-debian)  | branch `ubuntu/trusty` on amd64 Ubuntu 16.04 (_Trusty_)         |
+| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=ubuntu%2Fxenial)](https://travis-ci.org/KaiHa/nix-debian)  | branch `ubuntu/xenial` on amd64 Ubuntu 16.04 (_Xenial_)         |
 
 
 [1]: https://nixos.org/nix/
