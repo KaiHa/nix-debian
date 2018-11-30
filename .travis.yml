@@ -3,6 +3,11 @@ os: linux
 dist: xenial
 language: generic
 
+env:
+  - CPPFLAGS="-std=c++11"
+    CXXFLAGS="-std=c++11"
+    CFLAGS="-std=c++11"
+
 script:
   - sudo mk-build-deps --install debian/control
   - uscan -ddd
