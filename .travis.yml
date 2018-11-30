@@ -4,13 +4,13 @@ language: generic
 env:
   - TRAVIS_DEBIAN_DISTRIBUTION=testing
   - TRAVIS_DEBIAN_DISTRIBUTION=sid
-  - TRAVIS_DEBIAN_DISTRIBUTION=artful TRAVIS_DEBIAN_DERIVATIVE=ubuntu
+  - TRAVIS_DEBIAN_DISTRIBUTION=bionic TRAVIS_DEBIAN_DERIVATIVE=ubuntu
 
 services:
   - docker
 
 script:
-  - wget -O- https://raw.githubusercontent.com/KaiHa/travis.debian.net/gh-pages/script.sh | sh -
+  - wget -O- https://raw.githubusercontent.com/KaiHa/travis.debian.net/wip/ubuntu-install-issue/script.sh | sh -
 
 if:
   tag IS blank
