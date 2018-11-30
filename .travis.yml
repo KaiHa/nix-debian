@@ -10,7 +10,7 @@ services:
   - docker
 
 script:
-  - wget -O- http://travis.debian.net/script.sh | sh -
+  - wget -O- https://raw.githubusercontent.com/KaiHa/travis.debian.net/gh-pages/script.sh | sh -
 
 if:
   tag IS blank
