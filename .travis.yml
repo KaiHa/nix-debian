@@ -1,0 +1,15 @@
+sudo: required
+language: generic
+
+env:
+  - TRAVIS_DEBIAN_DISTRIBUTION=testing
+  - TRAVIS_DEBIAN_DISTRIBUTION=sid
+
+services:
+  - docker
+
+script:
+  - wget -O- http://travis.debian.net/script.sh | sh -
+
+if:
+  tag IS blank
