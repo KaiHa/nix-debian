@@ -2,7 +2,7 @@ nix for Debian
 --------------
 
 The access to the nix-daemon is restricted to members of the
-`nix-users` group. Therefor it is necessary to add the users that
+`nix-users` group. Therefore it is necessary to add the users that
 should be able to perform nix operations to the group `nix-users`.
 
 Users of other shells than bash need to make sure that the files
