@@ -49,11 +49,11 @@ sudo autopkgtest -B export/nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
 Current Weather
 ---------------
 
-| _Status_                                                                                                                      | _Branch and Environment_                                        |
-|:-----------------------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------|
-| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=debian%2Fstretch)](https://travis-ci.org/KaiHa/nix-debian) | branch `debian/stretch` on amd64 Debian 9 (_Stretch_)           |
-| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=master)](https://travis-ci.org/KaiHa/nix-debian)           | branch `master` on amd64 Debian _testing_ and Debian _unstable_ |
-| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=ubuntu%2Fxenial)](https://travis-ci.org/KaiHa/nix-debian)  | branch `ubuntu/xenial` on amd64 Ubuntu 16.04 (_Xenial_)         |
+| _Status_                                                                                                                      | _Branch and Environment_                                                                 |
+|:-----------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------|
+| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=debian%2Fstretch)](https://travis-ci.org/KaiHa/nix-debian) | branch `debian/stretch` on amd64 Debian 9 (_Stretch_)                                    |
+| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=master)](https://travis-ci.org/KaiHa/nix-debian)           | branch `master` on amd64 Debian _testing_, Debian _unstable_ and Ubuntu 18.10 (_Cosmic_) |
+| [![Build Status](https://travis-ci.org/KaiHa/nix-debian.svg?branch=ubuntu%2Fxenial)](https://travis-ci.org/KaiHa/nix-debian)  | branch `ubuntu/xenial` on amd64 Ubuntu 16.04 (_Xenial_)                                  |
 
 
 [1]: https://nixos.org/nix/

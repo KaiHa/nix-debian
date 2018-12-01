@@ -4,6 +4,7 @@ language: generic
 env:
   - TRAVIS_DEBIAN_DISTRIBUTION=testing
   - TRAVIS_DEBIAN_DISTRIBUTION=sid
+  - TRAVIS_DEBIAN_DISTRIBUTION=cosmic TRAVIS_DEBIAN_DERIVATIVE=ubuntu
 
 services:
   - docker
