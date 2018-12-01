@@ -1,24 +1,16 @@
 sudo: required
-os: linux
-dist: xenial
 language: generic
 
 env:
-  - CPPFLAGS="-std=c++11"
-    CXXFLAGS="-std=c++11"
-    CFLAGS="-std=c++11"
+  - TRAVIS_DEBIAN_DISTRIBUTION=xenial TRAVIS_DEBIAN_DERIVATIVE=ubuntu
+  - TRAVIS_DEBIAN_DISTRIBUTION=bionic TRAVIS_DEBIAN_DERIVATIVE=ubuntu
+  - TRAVIS_DEBIAN_DISTRIBUTION=cosmic TRAVIS_DEBIAN_DERIVATIVE=ubuntu
+
+services:
+  - docker
 
 script:
-  - sudo mk-build-deps --install debian/control
-  - uscan -ddd
-  - tar -x -f ../nix_*.orig.tar.xz --strip-components=1
-  - dpkg-buildpackage -us -uc
+  - wget -O- https://raw.githubusercontent.com/KaiHa/travis.debian.net/wip/ubuntu-install-issue/script.sh | sh -
 
-addons:
-  apt:
-    packages:
-    - autopkgtest
-    - debhelper
-    - devscripts
-    - equivs
-    - libwww-perl
+if:
+  tag IS blank
