@@ -9,4 +9,17 @@ Users of other shells than bash need to make sure that the files
 /etc/profile.d/nix-daemon.sh and /etc/profile.d/nix.sh are sourced by their
 shell.
 
- -- Kai Harries <kai.harries@gmail.com>  Sat, 23 Sep 2017 20:13:42 +0200
+
+Bugs
+----
+
+This package creates a toplevel directory (/nix) that is not FHS
+compliant. It is necessary that the nix-store is located at
+/nix/store, since otherwise it would be impossible to use pre-build
+binaries from the standard Nixpkgs channels [1].
+
+
+[1] https://nixos.org/nix/manual/#sec-building-source
+
+
+ -- Kai Harries <kai.harries@gmail.com>  Sat, 15 Dec 2018 22:53:42 +0100
