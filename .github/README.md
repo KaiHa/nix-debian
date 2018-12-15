@@ -42,7 +42,7 @@ Some `autopkgtest` are available and can be used to test the created
 Debian package.
 
 ```bash
-sudo autopkgtest -B export/nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
+sudo autopkgtest -B ../nix.deb-export/nix_<VERSION>_amd64.deb . -- lxc autopkgtest-sid
 ```
 
 
