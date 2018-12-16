@@ -1,1 +1,2 @@
 nix binary: package-contains-empty-directory
+nix binary: non-standard-toplevel-dir
