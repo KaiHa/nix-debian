@@ -1,2 +1,1 @@
-etc/profile.d/nix-daemon.sh  etc/X11/Xsession.d/90nix-daemon
 etc/profile.d/nix.sh  etc/X11/Xsession.d/90nix

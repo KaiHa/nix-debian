@@ -1,2 +1,3 @@
 fix-service-file-path.patch
 fix-Makefile.config.patch
+trim-nix-profile.patch
