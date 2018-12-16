@@ -32,11 +32,12 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install
 	# remove deprecated upstart configuration
-	-rm debian/nix/etc/init/nix-daemon.conf
+	rm -r debian/nix/etc/init/
+	# install pkgconfig configuration
 	mkdir -p debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
-	-mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
-	-mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc
-	-mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-store.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc
+	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-store.pc
 	# since this is a multi-user nix installation we remove the
 	# default nix.sh and replace it by nix-daemon.sh
 	rm debian/nix/etc/profile.d/nix.sh
