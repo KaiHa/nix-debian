@@ -1,0 +1,48 @@
+Author: Kai Harries <kai.harries@gmail.com>
+Date:   Sun Dec 16 16:53:20 2018 +0100
+
+    Trim the nix-profile-daemon.sh
+    
+    Do not subscribe root by default to a nix-channel
+    
+    Do not set the NIX_SSL_CERT_FILE environment variables
+
+diff --git a/scripts/nix-profile-daemon.sh.in b/scripts/nix-profile-daemon.sh.in
+--- a/scripts/nix-profile-daemon.sh.in
++++ b/scripts/nix-profile-daemon.sh.in
+@@ -27,11 +27,6 @@ if test -w $HOME; then
+       fi
+   fi
+ 
+-  # Subscribe the root user to the NixOS channel by default.
+-  if [ "$USER" = root -a ! -e $HOME/.nix-channels ]; then
+-      echo "https://nixos.org/channels/nixpkgs-unstable nixpkgs" > $HOME/.nix-channels
+-  fi
+-
+   # Create the per-user garbage collector roots directory.
+   NIX_USER_GCROOTS_DIR=@localstatedir@/nix/gcroots/per-user/$USER
+   mkdir -m 0755 -p $NIX_USER_GCROOTS_DIR
+@@ -49,23 +44,5 @@ if test -w $HOME; then
+   fi
+ fi
+ 
+-
+-# Set $NIX_SSL_CERT_FILE so that Nixpkgs applications like curl work.
+-if [ ! -z "${NIX_SSL_CERT_FILE:-}" ]; then
+-    : # Allow users to override the NIX_SSL_CERT_FILE
+-elif [ -e /etc/ssl/certs/ca-certificates.crt ]; then # NixOS, Ubuntu, Debian, Gentoo, Arch
+-    export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+-elif [ -e /etc/ssl/ca-bundle.pem ]; then # openSUSE Tumbleweed
+-    export NIX_SSL_CERT_FILE=/etc/ssl/ca-bundle.pem
+-elif [ -e /etc/ssl/certs/ca-bundle.crt ]; then # Old NixOS
+-    export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
+-elif [ -e /etc/pki/tls/certs/ca-bundle.crt ]; then # Fedora, CentOS
+-    export NIX_SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
+-elif [ -e "$NIX_USER_PROFILE_DIR/etc/ssl/certs/ca-bundle.crt" ]; then # fall back to cacert in the user's Nix profile
+-    export NIX_SSL_CERT_FILE=$NIX_USER_PROFILE_DIR/etc/ssl/certs/ca-bundle.crt
+-elif [ -e "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt" ]; then # fall back to cacert in the default Nix profile
+-    export NIX_SSL_CERT_FILE=/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+-fi
+-
+ export NIX_PATH="nixpkgs=@localstatedir@/nix/profiles/per-user/root/channels/nixpkgs:@localstatedir@/nix/profiles/per-user/root/channels"
+ export PATH="$HOME/.nix-profile/bin:@localstatedir@/nix/profiles/default/bin:$PATH"
