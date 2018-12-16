@@ -5,9 +5,8 @@ The access to the nix-daemon is restricted to members of the
 `nix-users` group. Therefore it is necessary to add the users that
 should be able to perform nix operations to the group `nix-users`.
 
-Users of other shells than bash need to make sure that the files
-/etc/profile.d/nix-daemon.sh and /etc/profile.d/nix.sh are sourced by their
-shell.
+Users of other shells than bash need to make sure that the file
+/etc/profile.d/nix.sh is sourced by their shell.
 
 
 Bugs
