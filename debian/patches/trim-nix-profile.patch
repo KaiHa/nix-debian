@@ -1,11 +1,12 @@
 Author: Kai Harries <kai.harries@gmail.com>
-Date:   Sun Dec 16 16:53:20 2018 +0100
+Date:   Sun Dec 16 22:25:20 2018 +0100
 
     Trim the nix-profile-daemon.sh
     
     Do not subscribe root by default to a nix-channel
     
     Do not set the NIX_SSL_CERT_FILE environment variables
+
 
 diff --git a/scripts/nix-profile-daemon.sh.in b/scripts/nix-profile-daemon.sh.in
 --- a/scripts/nix-profile-daemon.sh.in
@@ -22,7 +23,7 @@ diff --git a/scripts/nix-profile-daemon.sh.in b/scripts/nix-profile-daemon.sh.in
    # Create the per-user garbage collector roots directory.
    NIX_USER_GCROOTS_DIR=@localstatedir@/nix/gcroots/per-user/$USER
    mkdir -m 0755 -p $NIX_USER_GCROOTS_DIR
-@@ -49,23 +44,5 @@ if test -w $HOME; then
+@@ -49,26 +44,5 @@ if test -w $HOME; then
    fi
  fi
  
@@ -38,10 +39,13 @@ diff --git a/scripts/nix-profile-daemon.sh.in b/scripts/nix-profile-daemon.sh.in
 -    export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
 -elif [ -e /etc/pki/tls/certs/ca-bundle.crt ]; then # Fedora, CentOS
 -    export NIX_SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
--elif [ -e "$NIX_USER_PROFILE_DIR/etc/ssl/certs/ca-bundle.crt" ]; then # fall back to cacert in the user's Nix profile
--    export NIX_SSL_CERT_FILE=$NIX_USER_PROFILE_DIR/etc/ssl/certs/ca-bundle.crt
--elif [ -e "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt" ]; then # fall back to cacert in the default Nix profile
--    export NIX_SSL_CERT_FILE=/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+-else
+-  # Fall back to what is in the nix profiles, favouring whatever is defined last.
+-  for i in $NIX_PROFILES; do
+-    if [ -e $i/etc/ssl/certs/ca-bundle.crt ]; then
+-      export NIX_SSL_CERT_FILE=$i/etc/ssl/certs/ca-bundle.crt
+-    fi
+-  done
 -fi
 -
  export NIX_PATH="nixpkgs=@localstatedir@/nix/profiles/per-user/root/channels/nixpkgs:@localstatedir@/nix/profiles/per-user/root/channels"
