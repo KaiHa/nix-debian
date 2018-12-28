@@ -2681,6 +2681,7 @@ void DerivationGoal::runChild()
 
             for (auto & i : dirsInChroot) {
                 if (i.second.source == "/proc") continue; // backwards compatibility
+                if (i.second.source == "") continue; // HACK
                 doBind(i.second.source, chrootRootDir + i.first, i.second.optional);
             }
 
