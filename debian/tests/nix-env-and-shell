@@ -3,7 +3,7 @@
 
 all:
 	nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-	nix-channel --update
+	nix-channel -vvvv --update
 	nix-shell -vvvv -p nix-du --run "nix-du --help" '<nixpkgs>'
 	nix-env -vvvv -iA nixpkgs.nix-du
 	nix-du --help
