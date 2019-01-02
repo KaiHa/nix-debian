@@ -1,1 +1,19 @@
 nix binary: package-contains-empty-directory
+
+# The Nix package-manager keeps by default all packages in the path
+# `/nix/store`. In principal this path can be changed, but it would
+# make it impossible to use pre-build binaries from the standard
+# Nixpkgs channels [1].
+#
+# The problem are retained dependencies. A package keeps references to
+# a package it depends on. And this references contain the absolute
+# path (including `/nix/store`).
+#
+# Section 5.5.3 and 6.1 of the PHD thesis "The Purely Functional
+# Software Deployment Model" [2] on which Nix is based gives some more
+# insight.
+#
+# [1] https://nixos.org/nix/manual/#sec-building-source
+# [2] https://nixos.org/~eelco/pubs/phd-thesis.pdf
+
+nix binary: non-standard-toplevel-dir
