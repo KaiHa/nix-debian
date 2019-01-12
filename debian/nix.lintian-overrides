@@ -13,7 +13,11 @@ nix binary: package-contains-empty-directory
 # Software Deployment Model" [2] on which Nix is based gives some more
 # insight.
 #
+# This was discussed on the debian-devel mailing list [3] and so far
+# no voice was raised that a override would be the wrong thing to do.
+#
 # [1] https://nixos.org/nix/manual/#sec-building-source
 # [2] https://nixos.org/~eelco/pubs/phd-thesis.pdf
+# [3] https://lists.debian.org/debian-devel/2019/01/msg00010.html
 
 nix binary: non-standard-toplevel-dir
