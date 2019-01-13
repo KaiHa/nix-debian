@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: nix
-Source: https://github.com/NixOS/nix
+Source: https://nixos.org/releases/nix/latest/
 
 Files: *
 Copyright: 2006-2018 Eelco Dostra, ...
