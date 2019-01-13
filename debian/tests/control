@@ -4,4 +4,4 @@ Restrictions: isolation-container, needs-root
 
 Tests: nix-env-and-shell
 Depends: @, ca-certificates, make
-Restrictions: allow-stderr, isolation-machine, needs-root
+Restrictions: allow-stderr, isolation-container, needs-root

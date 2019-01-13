@@ -2,8 +2,11 @@
 
 
 all:
+	mkdir -p /etc/nix/
+	echo "sandbox = false" >> /etc/nix/nix.conf
+	service nix-daemon restart
 	nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-	nix-channel -vvvvv --update
-	nix-shell -vvvvv -p nix-du --run "nix-du --help" '<nixpkgs>'
-	nix-env -vvvvv -iA nixpkgs.nix-du
+	nix-channel --update
+	nix-shell -p nix-du --run "nix-du --help" '<nixpkgs>'
+	nix-env -iA nixpkgs.nix-du
 	nix-du --help
