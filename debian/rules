@@ -41,10 +41,9 @@ override_dh_auto_install:
 	mv debian/nix/usr/lib/pkgconfig/nix-expr.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-expr.pc
 	mv debian/nix/usr/lib/pkgconfig/nix-main.pc  debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-main.pc
 	mv debian/nix/usr/lib/pkgconfig/nix-store.pc debian/nix/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/nix-store.pc
-	# since this is a multi-user nix installation we remove the
-	# default nix.sh and replace it by nix-daemon.sh
+	# Setup of the user environment is done with systemd
 	rm debian/nix/etc/profile.d/nix.sh
-	mv debian/nix/etc/profile.d/nix-daemon.sh debian/nix/etc/profile.d/nix.sh
+	rm debian/nix/etc/profile.d/nix-daemon.sh
 
 
 override_dh_installinit:
