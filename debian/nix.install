@@ -1,2 +1,2 @@
 debian/nix.user.tmpfile usr/share/user-tmpfiles.d/nix-daemon.conf
-debin/nix.user.environment usr/lib/environment.d/nix-daemon.conf
+debian/nix.user.environment usr/lib/environment.d/nix-daemon.conf
