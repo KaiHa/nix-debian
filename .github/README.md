@@ -6,6 +6,10 @@ to get _nix_ included into Debian.
 
 [Help][2] is welcome :)
 
+**Please note:** This is neither the official nor the recommended way
+to install Nix on your Debian GNU/Linux. The official Nix installer of
+nixos.org can be found at https://nixos.org/nix/
+
 
 Building the Debian Package
 ---------------------------
