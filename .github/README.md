@@ -1,10 +1,11 @@
 Debian package of the nix package manager
 =========================================
 
+**Please note:** This project is no longer maintained but (with some
+luck) it will be continued at [salsa.debian.org][2].
+
 Packaging of the [nix package manager][1] for Debian. Ultimate goal is
 to get _nix_ included into Debian.
-
-[Help][2] is welcome :)
 
 **Please note:** This is neither the official nor the recommended way
 to install Nix on your Debian GNU/Linux. The official Nix installer of
@@ -61,4 +62,4 @@ Current Weather
 
 
 [1]: https://nixos.org/nix/
-[2]: https://github.com/KaiHa/nix-debian/issues
+[2]: https://salsa.debian.org/debian/nix
